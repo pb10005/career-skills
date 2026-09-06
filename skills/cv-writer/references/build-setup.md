@@ -108,6 +108,23 @@ footerTemplate: '<div style="font-size:8pt;width:100%;text-align:center;">' +
 
 それでも語中で割れる場合は、セルに `white-space: nowrap` を当てるか、列幅を調整する。ただし他の列を圧迫してページ数が増えることがあるので、ページ数を測りながら判断する。
 
+## CI で回す
+
+GitHub Actions で PDF を作るときは、手元との差は3つだけ。**ランナーには日本語フォントも Chromium も無い。**
+
+```yaml
+- run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-ipafont-gothic
+- run: npx --yes playwright@$(node -p "require('playwright-core/package.json').version") install --with-deps chromium
+```
+
+- **フォントは IPA 系だけ入れる。** 中国語フォント (Noto Sans CJK SC など) を同居させると、`style.css` の先頭にある "Noto Sans JP" があいまい一致で中国語グリフに解決される余地が生まれる。落とし穴 1 と同じ壊れ方を CI で再現することになる。`fc-list | grep -q IPAGothic` で入ったことを確かめる。
+- **Chromium は playwright-core と同じバージョンの CLI で入れる。** ブラウザのリビジョンはパッケージのバージョンで決まるため、ズレると `executablePath()` が解決できない。`~/.cache/ms-playwright` をキャッシュすれば2回目以降のダウンロードは無くなる。
+- **lint を CI の合否に使わない。** `{{氏名}}` をソースに残す運用だと lint は常に 1 で終わる。`|| true` で受けて、指摘は `$GITHUB_STEP_SUMMARY` に出すだけにする。
+
+**生成した PDF はコミットせず、アーティファクトとして受け取る。** 実名が焼き込まれているため、リポジトリの履歴に入れると後から消せない。氏名は Secret に置いて `--name` へ渡し、未設定ならビルドを失敗させる（プレースホルダーのまま提出用 PDF ができてしまうのを防ぐ）。
+
+トリガーは、提出のたびにスナップショットを残すなら `push: tags: ["v*"]` が扱いやすい。どのタグでどの版を出したかが残り、書きかけの状態でビルドが走らない。
+
 ## 分量の詰め方
 
 `build.mjs` は毎回ページ数を表示する。溢れたときは、まず CSS で詰めてから内容を削る。内容を削るのは最後の手段。
