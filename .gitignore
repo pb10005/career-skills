@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# 動作確認用の作業ディレクトリ（ルート直下のみ。skills/ 配下の scripts は追跡する）
+/src/
+/scripts/
+/package.json
+/package-lock.json

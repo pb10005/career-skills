@@ -1,0 +1,119 @@
+/*
+ * A4 印刷用スタイル。
+ *
+ * font-family を sans-serif で終わらせないこと。この環境には WenQuanYi Zen Hei
+ * (中国語フォント) が同居しており、フォールバックすると日本語が中国語字形で
+ * レンダリングされる (「直」「骨」「次」あたりで判別できる)。IPA 系で打ち止める。
+ *
+ * ページ余白は scripts/build.mjs の pdf({ margin }) で指定する。CSS の @page と
+ * 二重指定にすると競合するため、ここでは書かない。
+ */
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", "IPAPGothic", "IPAGothic";
+  font-size: 9.5pt;
+  line-height: 1.5;
+  color: #000;
+  margin: 0;
+  line-break: strict;
+  overflow-wrap: break-word;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* 表の中は等幅寄りのフォントにして数字を桁揃えする */
+table {
+  font-family: "IPAGothic", "Noto Sans JP", "Hiragino Sans";
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  margin: 3pt 0 5pt;
+  page-break-inside: avoid;
+}
+
+th,
+td {
+  border: 0.5pt solid #999;
+  padding: 2pt 4pt;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #f0f0f0;
+  white-space: nowrap;
+}
+
+/* 見出し語の列は折り返さずに詰める。値の列に幅を譲る */
+th {
+  white-space: nowrap;
+}
+
+h1 {
+  font-size: 16pt;
+  text-align: center;
+  letter-spacing: 0.3em;
+  margin: 0 0 3pt;
+  padding-bottom: 4pt;
+  border-bottom: 1.5pt solid #333;
+}
+
+h2 {
+  font-size: 12pt;
+  margin: 8pt 0 4pt;
+  padding: 1pt 0 2pt 6pt;
+  border-left: 5pt solid #333;
+  border-bottom: 1pt solid #333;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 10.5pt;
+  margin: 8pt 0 3pt;
+  padding-left: 4pt;
+  border-left: 3pt solid #666;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 10pt;
+  margin: 7pt 0 2pt;
+  padding-bottom: 1pt;
+  border-bottom: 0.5pt dashed #999;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 3pt 0;
+}
+
+ul,
+ol {
+  margin: 3pt 0;
+  padding-left: 1.4em;
+}
+
+li {
+  margin: 0.5pt 0;
+  page-break-inside: avoid;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* 冒頭の日付・氏名、末尾の「以上」 */
+.right {
+  text-align: right;
+  margin: 4pt 0;
+}
+
+/* 未記入箇所を PDF 上で目立たせる。提出前に残っていたら気づけるようにする */
+.placeholder {
+  background: #ffe9a8;
+  padding: 0 2pt;
+}
+
+.page-break {
+  page-break-after: always;
+}

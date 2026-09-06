@@ -1,0 +1,79 @@
+{
+  "_comment": "誤記 -> 正しい表記。応募先の職種に合わせて追記してください。左辺は大文字小文字を区別し、前後が英数字でないときだけ一致します。専門職の書類では固有名詞の誤記がそのまま能力の疑義になるため、その職種で日常的に使う固有名詞ほど入れる価値があります。",
+
+  "共通": {
+    "Wi-fi": "Wi-Fi",
+    "Eメール": "メール",
+    "Excel VBA": "Excel VBA",
+    "Power point": "PowerPoint",
+    "Powerpoint": "PowerPoint",
+    "Word文書": "Word文書",
+    "Buisiness": "Business",
+    "Managment": "Management"
+  },
+
+  "ソフトウェア開発": {
+    "Github": "GitHub",
+    "GitHUb": "GitHub",
+    "Javascript": "JavaScript",
+    "Java Script": "JavaScript",
+    "Typescript": "TypeScript",
+    "MySql": "MySQL",
+    "Mysql": "MySQL",
+    "PostgreSql": "PostgreSQL",
+    "Postgresql": "PostgreSQL",
+    "Node.JS": "Node.js",
+    "NodeJS": "Node.js",
+    "Kubernates": "Kubernetes",
+    "Kubernetis": "Kubernetes",
+    "Rest API": "REST API",
+    "Json": "JSON",
+    "Aws": "AWS",
+    "Vue.JS": "Vue.js",
+    "Nuxt.JS": "Nuxt.js",
+    "Next.JS": "Next.js",
+    "Objective C": "Objective-C",
+    "C sharp": "C#",
+    "Visual studio": "Visual Studio",
+    "Intellij": "IntelliJ",
+    "Postgres SQL": "PostgreSQL"
+  },
+
+  "営業・マーケティング": {
+    "Salesforce.com": "Salesforce",
+    "SalesForce": "Salesforce",
+    "sales force": "Salesforce",
+    "Hubspot": "HubSpot",
+    "Marketo": "Marketo",
+    "Saas": "SaaS",
+    "SAAS": "SaaS",
+    "Arr": "ARR",
+    "Mrr": "MRR",
+    "Kpi": "KPI",
+    "Ltv": "LTV",
+    "Roi": "ROI",
+    "インサイドセールス": "インサイドセールス",
+    "カスタマーサクセス": "カスタマーサクセス",
+    "Btob": "BtoB",
+    "BTOB": "BtoB",
+    "B to B": "BtoB",
+    "Rfp": "RFP"
+  },
+
+  "バックオフィス・人事": {
+    "Sap": "SAP",
+    "Workday": "Workday",
+    "Erp": "ERP",
+    "Hrbp": "HRBP",
+    "Ats": "ATS",
+    "Kintone": "kintone"
+  },
+
+  "研究・専門職": {
+    "Matlab": "MATLAB",
+    "Latex": "LaTeX",
+    "LaTex": "LaTeX",
+    "Pubmed": "PubMed",
+    "Iso": "ISO"
+  }
+}
